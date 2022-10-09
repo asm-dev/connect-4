@@ -10,20 +10,19 @@ class LinearBoard():
     def __init__(self):
         """
         We initiate our board empty/full of None, as many None as set by BOARD_LENGHT
-        [None] * BOARD_LENGHT
         """
-        self._column = [None for i in range(BOARD_LENGHT)]   
+        self._column = [None for i in range(BOARD_LENGHT)] # same as [None] * BOARD_LENGHT  
 
-    def add(self, piece):
+    def add(self, char):
         """
-        Adds a new game piece to the column, using the first available space
+        Adds a new game piece to the column, using the first available space. We use characters as game pieces
         """
         # As long as the board isn't full
         if not self.is_full():
             # Find the closest None
             idx = self._column.index(None)
-            # Swap it for the appropiate game piece
-            self._column[idx] = piece
+            # Swap it for the appropiate game piece/character
+            self._column[idx] = char
 
     def is_full(self):
         """
@@ -36,13 +35,13 @@ class LinearBoard():
             return True  
 
     def is_victory(self, char):
-        return find_streak(self._column,char, VICTORY_STRIKE)
+        return find_streak(self._column, char, VICTORY_STRIKE)
 
-    def is_tie(self, piece1, piece2):
+    def is_tie(self, char1, char2):
         """
         If the board is full and no one has won, then it's a tie
         """
-        if (self.is_victory(piece1) == False) and (self.is_victory(piece2) == False) and self.is_full():
+        if (self.is_victory(char1) == False) and (self.is_victory(char2) == False) and self.is_full():
             return True
         else:
             return False
