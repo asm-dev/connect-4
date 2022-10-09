@@ -12,14 +12,14 @@ def test_add():
     board = LinearBoard()
     for i in range(BOARD_LENGHT):
         board.add('x')
-    assert board.is_full() # == True
+    assert board.is_full()
 
 def test_victory():
     board = LinearBoard()
     for i in range(VICTORY_STRIKE):
         board.add('x')
     assert board.is_victory('o') == False
-    assert board.is_victory('x') # == True
+    assert board.is_victory('x')
 
 def test_tie():
     board = LinearBoard()
@@ -27,4 +27,4 @@ def test_tie():
     board.add('o')
     board.add('x')
     board.add('o')
-    assert board.is_tie('x', 'o') # == True
+    assert board.is_tie('x', 'o')
