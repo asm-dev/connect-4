@@ -1,3 +1,34 @@
+# These functions help us:
+# 1. Find ONE instance of an element in a list, in any position
+# 2. Find N instances of an element in a list, in any position
+# 3. Find N connected (meaning an element followed by that same element) in a list 
+
+def find_one(list, needle):
+    """
+    Returns True if it finds needle in the list. Otherwise, it returns False
+    """
+    return find_n(list, needle, 1)
+
+def find_n(list, needle, n):
+
+    if n > 0:
+        # We start the counter of occurences/instances
+        # We create an index
+        index = 0
+        count = 0
+        # While I haven't found that element N times and I haven't finished the list...
+        while count < n and index < len(list):
+            # If the needle is found the counter is updated 
+            if needle == list[index]:
+                count = count + 1
+            # No matter if the needle has been found or not, we update our index
+            index = index + 1
+        
+        # We return the result of comparing N with our counter 
+        return count >= n
+    else:
+        return False
+
 def find_streak(list, element, size):
     """
     Returns True if in list there are size or more connected (one after another) elements.

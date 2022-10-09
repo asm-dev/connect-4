@@ -28,3 +28,10 @@ def test_tie():
     board.add('x')
     board.add('o')
     assert board.is_tie('x', 'o')
+
+def test_add_to_full():
+    full = LinearBoard()
+    for i in range(BOARD_LENGHT):
+        full.add('x')
+    full.add('x')
+    assert full.is_full()
