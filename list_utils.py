@@ -11,7 +11,7 @@ def find_one(list, needle):
 
 def find_n(list, needle, n):
 
-    if n > 0:
+    if n >= 0:
         # We start the counter of occurences/instances
         # We create an index
         index = 0
@@ -20,11 +20,11 @@ def find_n(list, needle, n):
         while count < n and index < len(list):
             # If the needle is found the counter is updated 
             if needle == list[index]:
-                count = count + 1
+                count += 1
             # No matter if the needle has been found or not, we update our index
-            index = index + 1
+            index += 1
         
-        # We return the result of comparing N with our counter 
+        # We return the result of comparing N with our counter (bool)
         return count >= n
     else:
         return False
@@ -46,14 +46,14 @@ def find_streak(list, element, size):
             if list[index] == element:
                 # If I found the element, I activate the streak indicator and increment the counter
                 streak = True
-                count = count + 1
+                count += 1
             else:
                 # If it isn't there, I deactivate the streak indicator and reset the counter
                 streak = False
                 count = 0
             
             # We move forward to the next element
-            index = index + 1
+            index += 1
         
         # We return the comparison between counter and size result, AS LONG AS WE'RE ON A STRIKE 
         if streak == True:
