@@ -1,5 +1,6 @@
 from linear_board import LinearBoard
 from settings import BOARD_LENGHT
+from list_utils import *
 
 
 class SquareBoard:
@@ -53,8 +54,14 @@ class SquareBoard:
         return victory
 
     def _any_horizontal_victory(self, char):
+        """
+        Finds a horizontal victory in the original board, by transposing it and then to this matrix checking if there's a vertical victory.
+        We create a temporary board from that transposed matrix. If that one has a vertical victory then it means that the original one has a horizontal one
+        """
         # a horizontal victory is a transposed vertical victory
-        return False
+        transp = transpose(self.as_matrix())
+        tmp_board = SquareBoard.fromList(transp)
+        return tmp_board._any_vertical_victory(char)
 
     def _any_rising_victory(self, char):
         return False

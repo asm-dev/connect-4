@@ -90,7 +90,7 @@ def transpose(list_of_lists):
         transp.append(nth_elements(list_of_lists, index))
     return transp
 
-matrix = [[1,2,3,4], [4,3,2,1], [0,0,0,0], [9,9,9,9]]
-print(matrix == transpose(transpose(matrix)))
-print(matrix)
-print(transpose(matrix))
+#matrix = [[1,2,3,4], [4,3,2,1], [0,0,0,0], [9,9,9,9]]
+# print(matrix == transpose(transpose(matrix)))
+# print(matrix)
+# print(transpose(matrix))
