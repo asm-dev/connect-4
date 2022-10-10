@@ -85,12 +85,12 @@ def transpose(list_of_lists):
     We get their nth values and add them to the accum, which is the value we return.
     """
     transp = []
-    for index in range(len(list_of_lists)):
+    for index in range(len(list_of_lists[0])):
     # for index, sub_list in enumerate(list_of_lists):
         transp.append(nth_elements(list_of_lists, index))
     return transp
 
-# matrix = [[1,2,3,4], [4,3,2,1], [0,0,0,0], [9,9,9,9]]
-# print(matrix == transpose(transpose(matrix)))
-# print(matrix)
-# print(transpose(matrix))
+matrix = [[1,2,3,4], [4,3,2,1], [0,0,0,0], [9,9,9,9]]
+print(matrix == transpose(transpose(matrix)))
+print(matrix)
+print(transpose(matrix))
