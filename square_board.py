@@ -4,13 +4,14 @@ from settings import BOARD_LENGHT
 
 class SquareBoard:
     """
-    This class represents a square board. It combines 4 columns (4 LinearBoards)
+    This class represents a square board. It combines X columns (X LinearBoards), depending on BOARD_LENGHT settings
     """
 
     def __init__(self):
         self._columns = [LinearBoard() for i in range (BOARD_LENGHT)] 
     
     def add(self, char, index):
+        self._columns[index].add(char)
         pass
 
     def is_full(self):
@@ -26,12 +27,14 @@ class SquareBoard:
         return self._any_vertical_victory(char) or self._any_horizontal_victory(char) or self._any_rising_victory(char) or self._any_sinking_victory(char)
 
     def _any_vertical_victory(self, char):
+        # return reduce(self._columns, False, lambda x, y : x.is_victory() or y.is_victory())
         victory = False
         for lboard in self._columns:
             victory = victory or lboard.is_victory(char)
         return victory
 
     def _any_horizontal_victory(self, char):
+        # a horizontal victory is a transposed vertical victory
         return False
 
     def _any_rising_victory(self, char):
