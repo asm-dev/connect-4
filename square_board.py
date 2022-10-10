@@ -7,12 +7,31 @@ class SquareBoard:
     This class represents a square board. It combines X columns (X LinearBoards), depending on BOARD_LENGHT settings
     """
 
+    @classmethod
+    def fromList(cls, list_of_lists):
+        """
+        It tansforms a lists of lists (list of ) into a list of LinearBoard
+        """
+        board = cls()
+        board._columns = list(map(lambda element: LinearBoard.fromList(element), list_of_lists))
+        return board
+
+
     def __init__(self):
         self._columns = [LinearBoard() for i in range (BOARD_LENGHT)] 
     
     def add(self, char, index):
         self._columns[index].add(char)
         pass
+
+    def as_matrix(self):
+        """
+        Returns its representation as a matrix
+        """
+        matrix = []
+        for linear_board in self._columns:
+            matrix.append(linear_board.as_list())
+        return matrix
 
     def is_full(self):
         """

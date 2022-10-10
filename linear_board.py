@@ -7,11 +7,26 @@ class LinearBoard():
     None represents an empty space 
     """
 
+    @classmethod
+    def fromList(cls, list):
+        """
+        It tansforms a lists of lists (list of ) into a list of LinearBoard
+        """
+        board = cls()
+        board._column = list
+        return board
+
     def __init__(self):
         """
         We initiate our board empty/full of None, as many None as set by BOARD_LENGHT
         """
         self._column = [None for i in range(BOARD_LENGHT)] # same as [None] * BOARD_LENGHT  
+
+    def as_list(self):
+        """
+        Returns the board's representation as a list
+        """
+        return self._column
 
     def add(self, char):
         """
