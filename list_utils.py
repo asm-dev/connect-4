@@ -79,7 +79,7 @@ def nth_elements(list_of_lists, n):
         result.append(sub_list[n])
     return result
 
-def transpose(list_of_lists):
+def transpose(list_of_lists): # A list of lixts is called a matrix
     """
     This function creates an empty matrix, which we use to accumulate from 0 to last idx from list of lists.
     We get their nth values and add them to the accum, which is the value we return.
@@ -94,3 +94,23 @@ def transpose(list_of_lists):
 # print(matrix == transpose(transpose(matrix)))
 # print(matrix)
 # print(transpose(matrix))
+
+def displace(l, distance, filler=None):
+    if distance == 0:
+        return l
+    elif distance > 0:
+        filling = [filler] * distance
+        res = filling + l
+        res = res[:-distance]
+        return res
+    else:
+        filling = [filler] * abs(distance)
+        res = l + filling
+        res = res[abs(distance):]
+        return res
+
+def displace_matrix(m, filler=None):
+    d = []
+    for i in range(len(m)):
+        d.append(displace(m[i], i - 1, filler))
+    return d
